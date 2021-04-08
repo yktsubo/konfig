@@ -123,7 +123,7 @@ load common
 
 @test "import single config from stdin and print to stdout" {
   use_config config1
-  run bash -c "cat testdata/config-2 | ${COMMAND} import -i"
+  run bash -c "KUBECONFIG=testdata/config-2 kubectl config view --flatten | ${COMMAND} import -i"
   echo "$output"
   [[ "$status" -eq 0 ]]
   [[ $(check_fixture 'testdata/config12-flat' "$output") = 'same' ]]
@@ -131,7 +131,7 @@ load common
 
 @test "import single config from stdin" {
   use_config config1
-  run bash -c "cat testdata/config-2 | ${COMMAND} import -i --save"
+  run bash -c "KUBECONFIG=testdata/config-2 kubectl config view --flatten | ${COMMAND} import -i --save"
   echo "$output"
   [[ "$status" -eq 0 ]]
   [[ $(check_kubeconfig 'testdata/config12-flat') = 'same' ]]
@@ -139,10 +139,10 @@ load common
 
 @test "import no stdin should preserve .kube/config" {
   use_config config1
-  run bash -c "cat testdata/config-2 | ${COMMAND} import -i --save"
+  run ${COMMAND} import -i --save
   echo "$output"
   [[ "$status" -eq 0 ]]
-  [[ $(check_kubeconfig 'testdata/config12-flat') = 'same' ]]
+  [[ $(check_kubeconfig 'testdata/config1') = 'same' ]]
 }
 
 @test "failed read of imported config should preserve .kube/config" {
