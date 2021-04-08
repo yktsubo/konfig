@@ -86,7 +86,7 @@ merge() {
 
 import_ctx() {
     local tmpcfg
-    local tmpinputcfg
+    local tmpinputcfg=""
     local out=""
     local arg=""
     for OPT in "$@"
