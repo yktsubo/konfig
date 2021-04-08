@@ -148,7 +148,7 @@ load common
   use_config config1
   run bash -c "echo invalid | ${COMMAND} import -i --save"
   echo "$output"
-  [[ "$status" -eq 0 ]]
+  [[ "$status" -eq 1 ]]
   [[ $(check_kubeconfig 'testdata/config1') = 'same' ]]
 }
 
