@@ -17,9 +17,6 @@ Imports the config file `new-cfg` into the default kubeconfig at `~/.kube/config
 To show the result without changing your kubeconfig, do
 ```bash
 konfig import new-cfg
-
-```bash
-konfig import new-cfg
 ```
 
 CAVEAT: due to how shells work, the following will lose your current `~/.kube/config`
