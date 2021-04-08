@@ -140,6 +140,13 @@ load common
 @test "import no stdin should preserve .kube/config" {
   use_config config1
   run ${COMMAND} import -i --save
+  [[ "$status" -eq 0 ]]
+  [[ $(check_kubeconfig 'testdata/config1') = 'same' ]]
+}
+
+@test "import invalid file from stdin should preserve .kube/config" {
+  use_config config1
+  run bash -c "echo invalid | ${COMMAND} import -i --save"
   echo "$output"
   [[ "$status" -eq 0 ]]
   [[ $(check_kubeconfig 'testdata/config1') = 'same' ]]
