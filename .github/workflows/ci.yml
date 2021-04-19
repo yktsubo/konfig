@@ -23,7 +23,8 @@ jobs:
       env:
         SHELLCHECK_OPTS: -e SC2155
 
-    - run: |
+    - name: Add 
+      run: |
        mkdir -p $HOME/.local/bin
        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
