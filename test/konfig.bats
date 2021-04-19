@@ -187,12 +187,12 @@ load common
 
 @test "no kubectl detected" {
   KUBECTLPATH=$(which kubectl)  
-  mv ${KUBECTLPATH} ${KUBECTLPATH}_tmp
+  mv ${KUBECTLPATH} /tmp/kubectl
   run ${COMMAND}
   echo "$output"
   [[ "$status" -eq 0 ]]
   [[ "$output" = "kubectl is not installed" ]]
-  mv ${KUBECTLPATH}_tmp ${KUBECTLPATH}
+  mv /tmp/kubectl ${KUBECTLPATH}
 }
 
 @test "unknown subcommand" {
