@@ -186,12 +186,13 @@ load common
 ####  ERRORS
 
 @test "no kubectl detected" {
-  mv $HOME/.local/bin/kubectl $HOME/.local/bin/kubectl_tmp  
+  OLDPATH="$PATH"
+  PATH=/bin
   run ${COMMAND}
   echo "$output"
   [[ "$status" -eq 1 ]]
   [[ "$output" = "kubectl is not installed" ]]
-  mv $HOME/.local/bin/kubectl_tmp $HOME/.local/bin/kubectl 
+  PATH="$OLDPATH"
 }
 
 @test "unknown subcommand" {

@@ -23,18 +23,11 @@ jobs:
       env:
         SHELLCHECK_OPTS: -e SC2155
 
-    - name: Add 
-      run: |
-       mkdir -p $HOME/.local/bin
-       echo "$HOME/.local/bin" >> $GITHUB_PATH
-
     - name: Run tests
       run: |
          set -euo pipefail
          sudo apt-get update -qq
-         sudo apt-get install -qq bats
-         curl -fsSL -o $HOME/.local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.2/bin/linux/amd64/kubectl
-         chmod +x $HOME/.local/bin/kubectl
+         sudo apt-get install -qq bats         
          make test
 
     - name: Create assets
