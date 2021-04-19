@@ -28,7 +28,7 @@ jobs:
          set -euo pipefail
          sudo apt-get update -qq
          sudo apt-get install -qq bats         
-         sudo mv /bin/kubectl /usr/local/bin/kubectl
+         sudo mv $(which kubectl) /usr/local/bin/kubectl
          make test
 
     - name: Create assets
