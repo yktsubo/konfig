@@ -127,7 +127,7 @@ load common
   run ${COMMAND} import -s /does/not/exist testdata/config-2
   chmod u+r testdata/config-2
   echo "$output"
-  [[ "$status" -eq 0 ]]
+  [[ "$status" -eq 1 ]]
   [[ $(check_kubeconfig 'testdata/config1') = 'same' ]]
 }
 
@@ -187,7 +187,7 @@ load common
 
 @test "no kubectl detected" {
   OLDPATH="$PATH"
-  PATH=/bin
+  PATH=/usr/bin
   run ${COMMAND}
   echo "$output"
   [[ "$status" -eq 1 ]]
