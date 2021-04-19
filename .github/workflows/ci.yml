@@ -23,12 +23,16 @@ jobs:
       env:
         SHELLCHECK_OPTS: -e SC2155
 
+    - name: Add $HOME/.local/bin to $PATH
+      run: |
+         echo "$HOME/.local/bin" >> $GITHUB_PATH
+
     - name: Run tests
       run: |
          set -euo pipefail
          sudo apt-get update -qq
          sudo apt-get install -qq bats         
-         sudo mv $(which kubectl) /usr/local/bin/kubectl
+         sudo mv $(which kubectl) $HOME/.local/bin/kubectl
          make test
 
     - name: Create assets
