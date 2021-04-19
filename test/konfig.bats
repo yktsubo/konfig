@@ -127,7 +127,7 @@ load common
   run ${COMMAND} import -s /does/not/exist testdata/config-2
   chmod u+r testdata/config-2
   echo "$output"
-  [[ "$status" -eq 1 ]]
+  [[ "$status" -eq 0 ]]
   [[ $(check_kubeconfig 'testdata/config1') = 'same' ]]
 }
 
