@@ -188,7 +188,7 @@ load common
 @test "no kubectl detected" {
   OLDPATH="$PATH"
   PATH=/bin
-  KUBECTL=${which kubectl}
+  KUBECTL=$(which kubectl)
   mv $KUBECTL $KUBECTL_tmp
   run ${COMMAND}
   echo "$output"
