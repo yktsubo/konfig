@@ -18,6 +18,7 @@
 setup() {
   export XDG_CACHE_HOME="$(mktemp -d)"
   export KUBECONFIG="${XDG_CACHE_HOME}/config"
+  hash -r
 }
 
 # bats teardown function
