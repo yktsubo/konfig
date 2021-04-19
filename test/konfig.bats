@@ -186,13 +186,13 @@ load common
 ####  ERRORS
 
 @test "no kubectl detected" {
-  OLDPATH="$PATH"
-  PATH=/usr/bin
+  KUBECTLPATH=$(which kubectl)  
+  mv ${KUBECTLPATH} ${KUBECTLPATH}_tmp
   run ${COMMAND}
   echo "$output"
-  [[ "$status" -eq 1 ]]
+  [[ "$status" -eq 0 ]]
   [[ "$output" = "kubectl is not installed" ]]
-  PATH="$OLDPATH"
+  mv ${KUBECTLPATH}_tmp ${KUBECTLPATH}
 }
 
 @test "unknown subcommand" {
