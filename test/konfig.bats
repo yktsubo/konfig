@@ -189,13 +189,13 @@ load common
   OLDPATH="$PATH"
   PATH=/bin
   KUBECTL=$(which kubectl)
-  mv $KUBECTL $KUBECTL_tmp
+  mv ${KUBECTL} ${KUBECT}L_tmp
   run ${COMMAND}
   echo "$output"
   [[ "$status" -eq 1 ]]
   [[ "$output" = "kubectl is not installed" ]]
   PATH="$OLDPATH"
-  mv $KUBECTL_tmp $KUBECTL 
+  mv ${KUBECTL}_tmp ${KUBECTL}
 }
 
 @test "unknown subcommand" {
