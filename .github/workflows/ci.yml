@@ -28,8 +28,8 @@ jobs:
          set -euo pipefail
          sudo apt update -qq
          sudo apt install -qq bats
-         sudo curl -fsSL -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.2/bin/linux/amd64/kubectl
-         sudo chmod +x /usr/bin/kubectl
+         sudo curl -fsSL -o /usr/loacl/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.2/bin/linux/amd64/kubectl
+         sudo chmod +x /usr/local/bin/kubectl
          make test
 
     - name: Create assets
